@@ -22,6 +22,23 @@ sidebar_position: 1
 Les contrats, invariants et conventions qui **lient** les quatre projets
 MoneyGes. Rien d'autre.
 
+## ⚠️ Ce dépôt est public
+
+C'est un **choix assumé** : `mg-vitrine` le clone au build pour alimenter
+l'assistant, et Vercel ne sait pas cloner un sous-module privé.
+
+**Rien de secret n'entre ici.** Ni valeur de variable d'environnement, ni URL de
+connexion, ni jeton, ni nom d'hôte interne, ni donnée d'un utilisateur réel. Les
+pages **nomment** des variables — `DATABASE_URL`, `DIRECT_URL` — elles ne les
+renseignent jamais.
+
+La sécurité du système ne repose pas sur le secret de ces pages : elle tient aux
+gardes du code — le jeton, `@MinRole`, le filtrage par `userId` dans le `where`.
+Documenter une règle ne l'affaiblit pas. **Documenter une valeur, si.**
+
+Le test devant un doute : *si cette ligne cessait d'être publiable le jour où
+quelqu'un la lit, elle n'a rien à faire ici.*
+
 ## Ce qu'il ne contient pas
 
 La documentation propre à un projet reste chez lui : les controllers GetX du
