@@ -36,9 +36,14 @@ Tous sont préfixés par `/api/v1` (posé par `ApiPaths.baseUrl` côté client, 
 - `/auth/logout`
 - `/auth/me`
 - `/auth/refresh-token` — ⚠️ **servie à plat**, sans enveloppe
-- `/auth/request-code`
-- `/auth/social`
-- `/auth/verify-code`
+- `/auth/request-code` — `{ email }` seulement : **`phone` est refusé en 422**
+- `/auth/social` — `{ provider, id_token, name? }`
+- `/auth/verify-code` — `{ email, code, name? }`
+- `/auth/apple/callback` — retour du flux **web** Apple (Android) : Apple y
+  poste un corps form-urlencoded, la route répond **302** vers
+  `intent://callback?…#Intent;package=<applicationId>;scheme=signinwithapple;end`.
+  C'est la valeur d'`APPLE_REDIRECT_URI` du mobile ; extension serveur, absente
+  d'`api_path.dart`
 
 ### Identités de connexion
 

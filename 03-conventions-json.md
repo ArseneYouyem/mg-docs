@@ -54,6 +54,14 @@ Un numéro est **toujours un objet à trois clés**, ou `null` :
 ⚠️ **Absence de numéro = `null`**, jamais un objet aux trois champs vides. Un
 objet vide passe les vérifications de présence et casse plus loin.
 
+⚠️ **Le téléphone est une donnée de profil, pas un moyen de connexion.** Il se
+saisit sur les membres de compte ; `POST /auth/request-code` et `verify-code`
+n'acceptent que `email`, et **refusent `phone` en 422** avec un message qui
+renvoie vers Google, Apple ou le courriel. `GET /auth/identities` liste encore
+les identités `PHONE` des comptes ouverts avant ce retrait, avec
+`sign_in_enabled: false` — c'est ce drapeau que le client lit pour afficher
+« plus utilisable ».
+
 ## Icône
 
 `icon` est un **chemin d'asset du client**. Le serveur ne connaît pas les assets
